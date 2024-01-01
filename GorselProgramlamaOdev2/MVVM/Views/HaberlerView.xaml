@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GorselProgramlamaOdev2.MVVM.Views.HaberlerView"
+             Title="Haberler"  Appearing="OnAppearing">
+    
+    
+    <RefreshView Command="{Binding GetNewsCommand}" IsRefreshing="{Binding IsRefreshing}">
+        <Grid RowDefinitions=".08* ,*" >
+
+            <CollectionView  SelectionMode="Single" ItemsSource="{Binding Categorys}"
+                         SelectionChangedCommand="{Binding selectedChange }" SelectedItem="{Binding SelectedCategory}"
+                         
+                    >
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <VerticalStackLayout Spacing="15" VerticalOptions="Center">
+
+                            <Label Text="{Binding Category}" Style="{StaticResource Title}" />
+
+                        </VerticalStackLayout>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <CollectionView Grid.Row="1"  SelectionMode="Single" ItemsSource="{Binding Haberler}"  
+                         SelectionChanged="CollectionView_SelectionChanged" SelectedItem="{Binding SelectedHaber}"
+                         RemainingItemsThresholdReachedCommand="{Binding ThresholdReachedCommand}">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <VerticalStackLayout Spacing="5" VerticalOptions="Center">
+                            <Image Source="{Binding enclosure.link}"/>
+                            <Label Text="{Binding title }" HorizontalOptions="Center" />
+                            <Label Text="{Binding pubDate }" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </Grid>
+    </RefreshView>
+</ContentPage>
