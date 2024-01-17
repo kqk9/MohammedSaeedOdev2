@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GorselProgramlamaOdev2.MVVM.Views.HaberlerView"
-             Title="Haberler"  Appearing="OnAppearing">
+             Title="Haberler"  Appearing="OnAppearing"  BackgroundColor="{DynamicResource BackgroundColor}">
     
     
     <RefreshView Command="{Binding GetNewsCommand}" IsRefreshing="{Binding IsRefreshing}">
@@ -41,8 +41,8 @@
 
                         <VerticalStackLayout Spacing="5" VerticalOptions="Center">
                             <Image Source="{Binding enclosure.link}"/>
-                            <Label Text="{Binding title }" HorizontalOptions="Center" />
-                            <Label Text="{Binding pubDate }" HorizontalOptions="Center" />
+                            <Label Text="{Binding title }" HorizontalOptions="Center" TextColor="{DynamicResource TextColor}"/>
+                            <Label Text="{Binding pubDate }" HorizontalOptions="Center" TextColor="{DynamicResource TextColor}"/>
                         </VerticalStackLayout>
 
                     </DataTemplate>

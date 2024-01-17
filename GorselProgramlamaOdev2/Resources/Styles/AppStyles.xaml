@@ -7,7 +7,7 @@
     <!--#region DovizKuru Style -->
     <Style x:Key="card" TargetType="Frame">
         <Setter Property="Margin" Value="0"/>
-        <Setter Property="BackgroundColor" Value="#fbfaf6" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource CardColor}" />
         <Setter Property="BorderColor" Value="Transparent" />
         <Setter Property="CornerRadius" Value="25" />
         <Setter Property="Opacity" Value="1" />
@@ -33,7 +33,7 @@
     </Style>
 
     <Style Class="HavaLabel" TargetType="Label">
-        <Setter Property="TextColor" Value="{StaticResource White}" />
+        <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
         <Setter Property="FontFamily" Value="Rubik" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
@@ -42,26 +42,26 @@
     <Style x:Key="HavaTitle" TargetType="Label">
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontSize" Value="Large" />
-        <Setter Property="TextColor" Value="{StaticResource White}" />
+        <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
         <Setter Property="HorizontalOptions" Value="Center" />
 
     </Style>
 
     <Style x:Key="WeatherTitle" TargetType="Label">
         <Setter Property="FontFamily" Value="RubikLight" />
-        <Setter Property="TextColor" Value="{StaticResource White}" />
+        <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
 
     </Style>
 
     <Style x:Key="WeatherValue" TargetType="Label">
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="TextColor" Value="{StaticResource White}" />
+        <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
 
     </Style>
 
     <Style x:Key="Havacard" TargetType="Frame">
         <Setter Property="Padding" Value="0" />
-        <Setter Property="BackgroundColor" Value="{StaticResource CardBlue}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource CardColor}" />
         <Setter Property="BorderColor" Value="Transparent" />
         <Setter Property="CornerRadius" Value="25" />
         <Setter Property="HeightRequest" Value="150" />
@@ -72,7 +72,7 @@
 
     <!--#endregion-->
 
-    <!--#region NewRegion -->
+    <!--#region Yapilacaklar -->
 
     <Color x:Key="DarkBlue2" >#212B4F</Color>
     <Color x:Key="LightBlue" >#8A8BA6</Color>
@@ -101,12 +101,13 @@
 
     <Shadow x:Key="shadow"
        Brush="#CFD0D4"
+            
        Opacity="0.6"
        Radius="15"
        Offset="10 , 15"/>
     <Style TargetType="RoundRectangle">
         <Setter Property="CornerRadius" Value="10"/>
-        <Setter Property="Fill" Value="White"/>
+        <Setter Property="Fill" Value="{DynamicResource BackgroundColor }"/>
         <Setter Property="WidthRequest" Value="200"/>
         <Setter Property="Shadow" Value="{StaticResource shadow}"/>
     </Style>

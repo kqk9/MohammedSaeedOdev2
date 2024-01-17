@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:GorselProgramlamaOdev2.Converters"        
              x:Class="GorselProgramlamaOdev2.MVVM.Views.DovizKuruView"
-             Title="Güncel Kurlar" BackgroundColor="#eeede9" Appearing="OnAppearing">
+             Title="Güncel Kurlar"  BackgroundColor="{DynamicResource BackgroundColor}" Appearing="OnAppearing">
 
     <ContentPage.Resources>
         <converters:YonConverter x:Key="YonConverter"/>
@@ -18,14 +18,14 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame Style="{StaticResource card}">
-                            <Grid Margin="10" ColumnDefinitions="*,*" RowDefinitions="*,*,*" RowSpacing="10" >
+                        <Frame Style="{StaticResource card}" Margin="10, 15 ,10,0">
+                            <Grid Margin="10" ColumnDefinitions="*,*" RowDefinitions="*,*,*" RowSpacing="5" >
                                 <Label Text="{Binding Title}"  Style="{StaticResource Title}"/>
-                                <Label Padding="15,0,0,0" Style="{StaticResource Content}" Grid.Row="1" Text="{Binding alis   ,StringFormat='Satiş: {0}'}" />
-                                <Label Padding="15,0,0,0" Grid.Column="1" Grid.Row="1"  Text="{Binding satis , StringFormat='Alış: {0}'}" />
-                                <Label Padding="15,0,0,0" Grid.Row="2" Text="{Binding fark  , StringFormat='Fark: {0}'}" />
+                                <Label Padding="15,0,0,0" TextColor="{DynamicResource TextColor}" Grid.Row="1" Text="{Binding alis   ,StringFormat='Satiş: {0}'}" />
+                                <Label Padding="15,0,0,0" TextColor="{DynamicResource TextColor}" Grid.Column="1" Grid.Row="1"  Text="{Binding satis , StringFormat='Alış: {0}'}" />
+                                <Label Padding="15,0,0,0" TextColor="{DynamicResource TextColor}" Grid.Row="2" Text="{Binding fark  , StringFormat='Fark: {0}'}" />
                                 <HorizontalStackLayout Grid.Column="1" Grid.Row="2" HorizontalOptions="Start" Spacing="10" Padding="15,0,0,0">
-                                    <Label Text="Yon:"/>
+                                    <Label TextColor="{DynamicResource TextColor}" Text="Yon:"/>
                                     <Image  >
                                         <Image.Source>
                                             <FontImageSource FontFamily="fontello" Glyph="&#xF111;" Color="{Binding yon, Converter={StaticResource YonConverter}}" Size="20"/>

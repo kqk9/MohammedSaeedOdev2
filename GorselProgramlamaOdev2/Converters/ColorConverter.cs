@@ -11,8 +11,11 @@ namespace GorselProgramlamaOdev2.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value != null) { 
             var color = value.ToString();
-            return Color.FromArgb(color);
+                return Color.FromArgb(color);
+            }
+            return Color.FromArgb("#fff");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

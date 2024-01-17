@@ -10,6 +10,7 @@ namespace GorselProgramlamaOdev2.MVVM.ViewModels
 {
     public class EklemeViewModel
     {
+        public YapilacaklarViewModel viewModel { get; set; } = new YapilacaklarViewModel();
         public string Task { get; set; }
         public ObservableCollection<YapilacaklarModel> Tasks { get; set; }
         public ObservableCollection<YapilacaklarCategories> Categories { get; set; }

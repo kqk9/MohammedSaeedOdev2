@@ -10,6 +10,20 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
                 <ResourceDictionary Source="Resources/Styles/AppStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <Color x:Key="BackgroundLight">#eeede9</Color>
+            <Color x:Key="TextLight">#000000</Color>
+
+            <Color x:Key="BackgroundDark">#0F0F0F</Color>
+            <Color x:Key="TextDark">#ffffff</Color>
+
+
+            <Color x:Key="CardDark">#232D3F</Color>
+            <Color x:Key="CardLight">#fbfaf6</Color>
+
+            <Color x:Key="DarkBlue2" >#212B4F</Color>
+            <Color x:Key="LightBlue" >#8A8BA6</Color>
+            
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

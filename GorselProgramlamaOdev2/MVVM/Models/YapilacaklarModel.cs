@@ -17,5 +17,6 @@ namespace GorselProgramlamaOdev2.MVVM.Models
         public int CategoryId { get; set; }
         public string TaskColor { get; set; }
         public bool IsSelected { get; internal set; }
+        public string ID { get; set; }
     }
 }

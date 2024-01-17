@@ -1,19 +1,25 @@
 using GorselProgramlamaOdev2.MVVM.Models;
 using GorselProgramlamaOdev2.MVVM.ViewModels;
+using PropertyChanged;
 
 namespace GorselProgramlamaOdev2.MVVM.Views;
-
+[AddINotifyPropertyChangedInterface]
 public partial class EklemeView : ContentPage
 {
-	public EklemeView()
+
+   public FireHelper fireHelper = new FireHelper();
+    public EklemeView()
 	{
 		InitializeComponent();
 	}
+
+ 
 
     private async void AddTaskClicked(object sender, EventArgs e)
     {
         var vm = BindingContext as EklemeViewModel;
         var selectedCategory = vm.Categories.Where(x => x.IsSelected == true).FirstOrDefault();
+
 
         if (selectedCategory != null)
         {
@@ -23,7 +29,8 @@ public partial class EklemeView : ContentPage
                 CategoryId = selectedCategory.Id,
 
             };
-            vm.Tasks.Add(task);
+            var res = await fireHelper.AddTask(task);
+            vm.viewModel.FillDateAsync();
             await Navigation.PopAsync();
         }
         else
@@ -32,6 +39,8 @@ public partial class EklemeView : ContentPage
         }
 
     }
+
+
 
     private async void AddCategoryClicked(object sender, EventArgs e)
     {
@@ -43,13 +52,16 @@ public partial class EklemeView : ContentPage
         var r = new Random();
         if (!string.IsNullOrEmpty(category))
         {
-            vm.Categories.Add(new YapilacaklarCategories
+           await fireHelper.AddCategory(new YapilacaklarCategories
             {
                 Id = vm.Categories.Max(x => x.Id) + 1,
                 Color = Color.FromRgb(r.Next(0, 255), r.Next(0, 255), r.Next(0, 255)).ToHex(),
                 CategoryName = category
             });
+            vm.viewModel.FillDateAsync();
         }
 
     }
+
+
 }

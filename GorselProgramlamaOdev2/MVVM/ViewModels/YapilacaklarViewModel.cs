@@ -1,24 +1,20 @@
 ﻿using GorselProgramlamaOdev2.MVVM.Models;
 using PropertyChanged;
-using System;
-using System.Collections.Generic;
+using Firebase.Database;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GorselProgramlamaOdev2.MVVM.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
     public class YapilacaklarViewModel
     {
-        public ObservableCollection<YapilacaklarCategories> Categories { get; set; }
-        public ObservableCollection<YapilacaklarModel> Tasks { get; set; }
+        public ObservableCollection<YapilacaklarCategories> Categories { get; set; } = new ObservableCollection<YapilacaklarCategories>();
+        public ObservableCollection<YapilacaklarModel> Tasks { get; set; } = new ObservableCollection<YapilacaklarModel>();
 
         public YapilacaklarViewModel()
         {
-            FillDate();
+            FillDateAsync();
             Tasks.CollectionChanged += Tasks_CollectionChanged;
         }
 
@@ -28,26 +24,16 @@ namespace GorselProgramlamaOdev2.MVVM.ViewModels
         }
 
 
-        private void FillDate()
+        public async void FillDateAsync()
         {
-            Categories = new ObservableCollection<YapilacaklarCategories>()
-           {
-               new YapilacaklarCategories
-               {
-                   Id = 1 ,
-                   CategoryName = "Test" ,
-                   Color = "#CF14DF"
-               }
-           };
-            Tasks = new ObservableCollection<YapilacaklarModel>
-               {
-                    new YapilacaklarModel
-                    {
-                         TaskName = "testtt",
-                         Completed = false,
-                         CategoryId = 1
-                    }
-               };
+            Tasks.Clear();
+            Categories.Clear();
+            FireHelper fireHelper = new FireHelper();
+            var res = await fireHelper.GetAllTasks();
+           Tasks = new ObservableCollection<YapilacaklarModel>(res);
+            var res2 = await fireHelper.GetAllCategories();
+            Categories = new ObservableCollection<YapilacaklarCategories>(res2);
+
             UpdateData();
         }
 

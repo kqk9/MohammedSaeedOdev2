@@ -31,5 +31,11 @@ Route="HavaDurumuView" />
 Title="Yapilacaklar"
 ContentTemplate="{DataTemplate views:Yapilacaklar}"
 Route="Yapilacaklar" />
+    <ShellContent
+Title="Ayarlar"
+ContentTemplate="{DataTemplate views:NewPage1}"
+Route="NewPage1" />
+
+
 
 </Shell>

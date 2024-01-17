@@ -17,21 +17,24 @@ public partial class Yapilacaklar : ContentPage
         mainViewModel.UpdateData();
     }
 
-    private void Button_Clicked(object sender, EventArgs e)
+  
+    private async void Button_Clicked(object sender, EventArgs e)
     {
         var taskView = new EklemeView
         {
             BindingContext = new EklemeViewModel
-            {
+            { 
+                viewModel = mainViewModel,
                 Tasks = mainViewModel.Tasks,
                 Categories = mainViewModel.Categories,
             }
         };
-        Navigation.PushAsync(taskView);
+       await Navigation.PushAsync(taskView);
+
     }
 
     private async void DeleteButton_Clicked(object sender, EventArgs e)
-    {
+    { FireHelper fireHelper = new FireHelper();
         if (sender is ImageButton deleteButton && deleteButton.BindingContext is YapilacaklarModel taskToDelete)
         {
             bool userConfirmed = await DisplayAlert("Silinsin mi?", "Silmeyi onayla", "Evet", "Hayir");
@@ -39,6 +42,7 @@ public partial class Yapilacaklar : ContentPage
             if (userConfirmed)
             {
                 mainViewModel.Tasks.Remove(taskToDelete);
+               // fireHelper.DeleteOne(taskToDelete.ID);
                 mainViewModel.UpdateData();
             }
         }
